@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PagingCaching"
         tools:targetApi="31">
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.PagingCaching">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
