@@ -1,4 +1,4 @@
-package xyz.teamgravity.pagingcaching.ui.theme
+package xyz.teamgravity.pagingcaching.presentation.theme
 
 import android.app.Activity
 import android.os.Build
