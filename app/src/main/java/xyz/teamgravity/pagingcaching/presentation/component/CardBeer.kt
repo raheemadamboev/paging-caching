@@ -15,12 +15,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import xyz.teamgravity.pagingcaching.R
 import xyz.teamgravity.pagingcaching.domain.model.BeerModel
@@ -30,7 +28,7 @@ fun CardBeer(
     beer: BeerModel,
 ) {
     Card(
-        modifier = Modifier.padding(10.dp)
+        modifier = Modifier.padding(horizontal = 10.dp)
     ) {
         Row(
             modifier = Modifier
