@@ -3,12 +3,23 @@ package xyz.teamgravity.pagingcaching.data.local.beer.dao
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Upsert
 import xyz.teamgravity.pagingcaching.data.local.beer.constant.BeerDatabaseConst.TABLE_BEER
 import xyz.teamgravity.pagingcaching.data.local.beer.entitiy.BeerEntity
 
 @Dao
 interface BeerDao {
+
+    ///////////////////////////////////////////////////////////////////////////
+    // INSERT
+    ///////////////////////////////////////////////////////////////////////////
+
+    @Transaction
+    suspend fun insertBeers(beers: List<BeerEntity>, clearCache: Boolean) {
+        if (clearCache) deleteAllBeers()
+        upsertBeers(beers)
+    }
 
     ///////////////////////////////////////////////////////////////////////////
     // UPSERT
