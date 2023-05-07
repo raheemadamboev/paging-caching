@@ -73,11 +73,9 @@ object ApplicationModule {
     @Singleton
     fun provideGetBeersSource(
         beerApi: BeerApi,
-        beerDatabase: BeerDatabase,
         beerDao: BeerDao,
     ): GetBeersSource = GetBeersSource(
-        remote = beerApi,
-        local = beerDatabase,
+        api = beerApi,
         dao = beerDao
     )
 
