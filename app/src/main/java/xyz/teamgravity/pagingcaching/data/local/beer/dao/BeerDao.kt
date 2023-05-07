@@ -1,0 +1,33 @@
+package xyz.teamgravity.pagingcaching.data.local.beer.dao
+
+import androidx.paging.PagingSource
+import androidx.room.Dao
+import androidx.room.Query
+import androidx.room.Upsert
+import xyz.teamgravity.pagingcaching.data.local.beer.constant.BeerDatabaseConst.TABLE_BEER
+import xyz.teamgravity.pagingcaching.data.local.beer.entitiy.BeerEntity
+
+@Dao
+interface BeerDao {
+
+    ///////////////////////////////////////////////////////////////////////////
+    // UPSERT
+    ///////////////////////////////////////////////////////////////////////////
+
+    @Upsert
+    suspend fun upsertBeers(beers: List<BeerEntity>)
+
+    ///////////////////////////////////////////////////////////////////////////
+    // DELETE
+    ///////////////////////////////////////////////////////////////////////////
+
+    @Query("DELETE FROM $TABLE_BEER")
+    suspend fun deleteAllBeers()
+
+    ///////////////////////////////////////////////////////////////////////////
+    // GET
+    ///////////////////////////////////////////////////////////////////////////
+
+    @Query("SELECT * FROM $TABLE_BEER")
+    fun getBeers(): PagingSource<Int, BeerEntity>
+}
