@@ -28,6 +28,11 @@ fun BeerListScreen(
 ) {
     val beers = viewmodel.beers.collectAsLazyPagingItems()
 
+    LaunchedEffect(key1 = beers.loadState) {
+        val state = beers.loadState.refresh
+        if (state is LoadState.Error) snackbar.showSnackbar(state.error.message ?: "")
+    }
+
     Scaffold(
         snackbarHost = {
             SnackbarHost(hostState = snackbar) { data ->
